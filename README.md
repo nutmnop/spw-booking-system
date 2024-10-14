@@ -46,5 +46,9 @@ npm run test
 - `GET /api/v1/booking/:id` - To get the booking transaction by id
 - `DEL /api/v1/booking/:id/cancel` - To cancel booking by id
 
+## Note
+
+To run linter properly please make sure to change file type of `eslint.config.mjs.txt` to `eslint.config.mjs` due to email file compression constraint
+
 #### Disclaimer
 I apologize for not being able to complete the unit and integration tests for this project. Due to time constraints, the tests were not fully implemented. However, I have ensured that the core functionality of the application is working as expected.
