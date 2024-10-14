@@ -20,7 +20,7 @@ app.get('/health', async (request, reply) => {
 const start = async () => {
   try {
     const port = process.env.PORT || 3000
-    await app.listen({ port: Number(port) })
+    await app.listen({ port: Number(port), host: '0.0.0.0' })
     console.log('Server running at http://localhost:' + port)
   } catch (err) {
     app.log.error(err)

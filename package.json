@@ -1,7 +1,7 @@
 {
   "name": "spw-booking-system",
   "version": "1.0.0",
-  "description": "",
+  "description": "Booking system for siam piwat",
   "main": "app.js",
   "scripts": {
     "start": "node dist/app.js",
