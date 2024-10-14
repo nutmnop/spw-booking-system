@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyPluginOptions } from 'fastify'
-import { PlatformError } from '../../entity/platformError'
+import PlatformError from '../../entity/platformError'
 
 async function bookingRouters(app: FastifyInstance, opts: FastifyPluginOptions) {
   app.addHook('preHandler', async (request, reply) => {
@@ -15,10 +15,12 @@ async function bookingRouters(app: FastifyInstance, opts: FastifyPluginOptions) 
       const bookings = app.restaurantService.getAllBookings()
       reply.send(bookings)
     } catch (err) {
-      const error: Error = err as Error
-      reply
-        .code(400)
-        .send({ msg: error.message })
+      if (err instanceof PlatformError) {
+        reply
+          .code(err.status)
+          .send({ msg: err.message })
+      }
+      throw err
     }
   })
 
@@ -41,10 +43,12 @@ async function bookingRouters(app: FastifyInstance, opts: FastifyPluginOptions) 
       const deletedDetail = app.restaurantService.cancel(request.params.id)
       reply.send(deletedDetail)
     } catch (err) {
-      const error: Error = err as Error
-      reply
-        .code(400)
-        .send({ msg: error.message })
+      if (err instanceof PlatformError) {
+        reply
+          .code(err.status)
+          .send({ msg: err.message })
+      }
+      throw err
     }
   })
 
@@ -67,10 +71,12 @@ async function bookingRouters(app: FastifyInstance, opts: FastifyPluginOptions) 
       const bookingDetail = app.restaurantService.reserve(request.body.seat)
       reply.send(bookingDetail)
     } catch (err) {
-      const error: Error = err as Error
-      reply
-        .code(400)
-        .send({ msg: error.message })
+      if (err instanceof PlatformError) {
+        reply
+          .code(err.status)
+          .send({ msg: err.message })
+      }
+      throw err
     }
   })
 
@@ -93,10 +99,12 @@ async function bookingRouters(app: FastifyInstance, opts: FastifyPluginOptions) 
       const deletedDetail = app.restaurantService.cancel(request.params.id)
       reply.send(deletedDetail)
     } catch (err) {
-      const error: Error = err as Error
-      reply
-        .code(400)
-        .send({ msg: error.message })
+      if (err instanceof PlatformError) {
+        reply
+          .code(err.status)
+          .send({ msg: err.message })
+      }
+      throw err
     }
   })
 }

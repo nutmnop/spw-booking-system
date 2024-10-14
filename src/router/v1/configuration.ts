@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyPluginOptions } from 'fastify'
-import { PlatformError } from '../../entity/platformError'
+import PlatformError from '../../entity/platformError'
 
 async function configurationRouters (app: FastifyInstance, opts: FastifyPluginOptions) {
   app.post<{
