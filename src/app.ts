@@ -11,7 +11,7 @@ const app = fastify({ logger: true })
   .withTypeProvider<JsonSchemaToTsProvider>()
   .register(restaurantPlugin)
   .register(configurationRouter, { prefix: '/api/v1/config' })
-  .register(bookingRouter, { prefix: 'api/v1/booking'})
+  .register(bookingRouter, { prefix: 'api/v1/booking' })
 
 app.get('/health', async (request, reply) => {
   return { msg: 'healthy' }

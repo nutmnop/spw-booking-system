@@ -71,7 +71,7 @@ export default class Restaurant {
     if (expectTables > this.remainingTable) {
       throw new PlatformError(
         400,
-        'Unable to book the table. The restaurant does not have enough seat for this booking.'
+        'Unable to book the table. The restaurant does not have enough seat for this booking.',
       )
     }
 
